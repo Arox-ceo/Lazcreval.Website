@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Website resmi LAZCREVAL, acara kolaborasi sekolah untuk menampilkan bakat dan mempererat tali persaudaraan.">
+<meta name="keywords" content="LAZCREVAL, OSIS Lazuardi GCS, acara sekolah, kolaborasi sekolah, bakat siswa, SMP">
+<meta name="author" content="Aalvaro Emranadirga">
+<title>LAZCREVAL - Support</title>
+<link rel="icon" type="image/png" href="logo osis.jpg">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --primary: #2B3884;
+    --secondary: #3B4EB4;
+    --accent: #5465CF;
+    --bg: #5765b3;
+    --text: #ffffff; /* lembut tapi terang */
+    --white: #ffffff;
+    --transition: 0.4s;
+}
+
+/* Global */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins', sans-serif;}
+body{background:var(--bg);color:var(--text);overflow-x:hidden;scroll-behavior:smooth;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+button{cursor:pointer;transition:all var(--transition);}
+
+/* HEADER FLOATING */
+header{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    max-width:1200px;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(43,56,132,0.45);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,0.15);
+    color:var(--white);
+    z-index:1000;
+    transition:0.3s;
+    border-radius:22px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.3);
+}
+header.scrolled{
+    background:rgba(43,56,132,0.65);
+}
+.header-left{display:flex;align-items:center;gap:15px;}
+.header-left img{width:60px;border-radius:10px;transition:0.3s;}
+.header-left img:hover{transform:scale(1.2) rotate(5deg);}
+header h1{font-size:1.5rem;font-weight:700;transition:0.3s;color:#e4e8ff;}
+.nav-buttons{display:flex;gap:15px;}
+.nav-buttons a{
+    padding:8px 16px;
+    border-radius:8px;
+    background:var(--secondary);
+    transition:all var(--transition);
+    position:relative;
+    overflow:hidden;
+    color:#f5f7ff;
+}
+.nav-buttons a::after{
+    content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+    background:rgba(255,255,255,0.2);transform:scaleX(0);transform-origin:left;
+    transition:transform 0.4s;
+}
+.nav-buttons a:hover::after{transform:scaleX(1);}
+.nav-buttons a:hover{background:var(--accent);color:var(--white);}
+
+/* Hero */
+.hero{
+    width:100%;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+.hero h2{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:3rem;
+    background:linear-gradient(90deg, #dbe4ff, #f9fbff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 4px 15px rgba(0,0,0,0.4);
+    z-index:3;
+    animation:fadeInUp 2s forwards;
+    transition:opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hero .overlay{
+    position:absolute;
+    top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,0.2);
+    z-index:2;
+}
+#hero-bg{
+    position:absolute;
+    top:0;left:0;width:100%;height:100%;
+    z-index:1;
+}
+
+/* Gradasi lembut ke bawah */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 100%);
+  filter: blur(8px);
+  z-index: 2;
+  pointer-events: none;
+  transition: all 0.6s ease-in-out;
+}
+
+/* Keyframes */
+@keyframes fadeInUp{
+    0%{opacity:0;transform:translate(-50%,60px);}
+    100%{opacity:1;transform:translate(-50%,-50%);}
+}
+
+/* Main / Promo Items */
+main{
+    padding:200px 30px 60px 30px;
+    display:flex;
+    flex-direction:column;
+    gap:60px;
+    position:relative;
+}
+
+.promo-item{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    flex-wrap:wrap;
+    opacity:0;
+    transform:translateY(50px);
+    transition:all 0.8s ease;
+    position:relative;
+}
+
+/* 🔥 Border animasi glowing */
+.promo-item::before{
+    content:"";
+    position:absolute;
+    top:-8px; left:-8px; right:-8px; bottom:-8px;
+    border-radius:20px;
+    background: linear-gradient(120deg, #4e5ee0, #7b8af0, #4a5de0, #7487f0);
+    background-size:300% 300%;
+    z-index:0;
+    opacity:0;
+    transform:scale(0.95);
+    transition:all 0.5s ease;
+    filter:blur(10px);
+    animation:moveGradient 4s ease infinite;
+}
+.promo-item:hover::before{
+    opacity:1;
+    transform:scale(1);
+    filter:blur(0);
+}
+@keyframes moveGradient{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.promo-item.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+.promo-item:nth-child(even){
+    flex-direction:row-reverse;
+}
+.promo-img{
+    flex:1;
+    min-width:300px;
+    overflow:hidden;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    transition:transform 0.5s;
+    position:relative;
+    z-index:1;
+}
+.promo-img img{
+    width:100%;
+    height:auto;
+    transition:transform 0.5s ease;
+}
+.promo-img img:hover{
+    transform:scale(1.08) rotate(1deg);
+}
+
+/* ✨ Soft Modern Text Colors */
+.promo-text{
+    flex:1;
+    min-width:300px;
+    position:relative;
+    z-index:1;
+    transition:transform 0.5s;
+    color:#eef2ff;
+}
+.promo-text h2{
+    font-size:2rem;
+    background: linear-gradient(90deg, #cdd9ff, #f0f3ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom:15px;
+}
+.promo-text p{
+    font-size:1.1rem;
+    line-height:1.6;
+    color:#e0e6ff;
+}
+
+/* Footer */
+footer {
+  background-color: #2b3884;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+footer a {
+  color: #d9dcff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+
+
+
+
+/* Responsive */
+@media(max-width:768px){
+    header{flex-direction:column;gap:10px;text-align:center;}
+    .nav-buttons{justify-content:center;}
+    .promo-item{flex-direction:column;text-align:center;}
+    .promo-text h2{font-size:1.6rem;}
+}
+@media(max-width:480px){
+    header h1{font-size:1.2rem;}
+    .nav-buttons a{padding:6px 12px;font-size:0.9rem;}
+    .hero h2{font-size:2rem;}
+}
+
+</style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <img src="logo osis.jpg" alt="Logo OSIS Lazuardi GCS">
+            <h1>LAZCREVAL</h1>
+        </div>
+        <nav class="nav-buttons">
+            <a href="index.html">Home</a>
+            <a href="About.html">About</a>
+            <a href="support.html" target="_blank">Support</a>
+            <a href="register.html">register</a>
+        </nav>
+    </header>
+
+<section class="hero">
+    <canvas id="hero-bg"></canvas>
+    <div class="overlay"></div>
+    <h2>Lazcreval Support</h2>
+</section>
+
+<main>
+    <article class="promo-item">
+        <div class="promo-img"><img src="foto 1.jpeg" alt="Promo 1"></div>
+        <div class="promo-text">
+            <h2>Support For OSIS</h2>
+            <p><p>Hubungi kami: <a href="https://wa.me/628111530309" target="_blank">+62 811-1530-309</a></p>
+        </p>
+        </div>
+    </article>
+    
+    <article class="promo-item">
+        <div class="promo-img"><img src="foto 2.jpeg" alt="Promo 2"></div>
+        <div class="promo-text">
+            <h2>Support For DEV</h2>
+            <p><p>Hubungi kami: <a href="https://wa.me/6287872789660" target="_blank">+62 878-7278-9660</a></p>
+        </p>
+        </div>
+    </article>
+
+</main>
+
+<footer>
+    <p>Terima kasih atas kunjungan Anda!</p>
+    <p>Website Ini Di Buat Oleh Dev Aalvaro Emranadirga. Info lebih lanjut ada di <a href="About.html">About</a> dan <a href="support.html">Support</a>.</p>
+</footer>
+
+<script>
+// Header scroll effect + hero fade
+window.addEventListener('scroll', ()=>{
+  const header = document.querySelector('header');
+  header.classList.toggle('scrolled', window.scrollY > 50);
+
+  const heroText = document.querySelector('.hero h2');
+  const fadeStart = 0;
+  const fadeEnd = 300;
+  const scrollY = window.scrollY;
+  const opacity = Math.max(0, 1 - (scrollY - fadeStart) / (fadeEnd - fadeStart));
+  heroText.style.opacity = opacity;
+  heroText.style.transform = `translate(-50%, calc(-50% + ${scrollY/10}px))`;
+});
+
+// Scroll reveal
+const items = document.querySelectorAll('.promo-item');
+const reveal = ()=>{
+    const trigger = window.innerHeight*0.85;
+    items.forEach(i=>{
+        if(i.getBoundingClientRect().top < trigger){i.classList.add('visible');}
+    });
+}
+window.addEventListener('scroll', reveal);
+window.addEventListener('load', reveal);
+
+// Hero background animation
+const canvas = document.getElementById('hero-bg');
+const ctx = canvas.getContext('2d');
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
+
+const particles = [];
+for(let i=0;i<80;i++){
+    particles.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*3+1,dx:(Math.random()-0.5)*0.5,dy:(Math.random()-0.5)*0.5});
+}
+
+function animate(){
+    const gradient = ctx.createLinearGradient(0,0,w,h);
+    gradient.addColorStop(0,'#2B3884');
+    gradient.addColorStop(0.5,'#3B4EB4');
+    gradient.addColorStop(1,'#5465CF');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0,0,w,h);
+
+    particles.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba(255,255,255,0.5)';
+        ctx.fill();
+        p.x+=p.dx;p.y+=p.dy;
+        if(p.x<0||p.x>w)p.dx*=-1;
+        if(p.y<0||p.y>h)p.dy*=-1;
+    });
+
+    requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener('resize', ()=>{
+    w=canvas.width=window.innerWidth;
+    h=canvas.height=window.innerHeight;
+});
+</script>
+
+</body>
+</html>
